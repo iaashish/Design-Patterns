@@ -26,11 +26,13 @@ public class testFileStrategy {
 	FileContext filecontext;
 	private String file;
 	private int expectedresult;
+	FileStrategy fs;
 
 	@Before
 	public void beforeClass() {
 		filewordcount = new FileWordCount();
 		filecontext = new FileContext(filewordcount);
+		fs = new FileStrategy();
 	}
 
 	@After
@@ -58,7 +60,7 @@ public class testFileStrategy {
 	 */
 	@Test
 	public void testDifferentFiles() throws IOException {
-		FileStrategy.fileReader(filecontext, file);
+		fs.fileReader(filecontext, file);
 		assertEquals(expectedresult, filewordcount.lineCount);
 	}
 }
