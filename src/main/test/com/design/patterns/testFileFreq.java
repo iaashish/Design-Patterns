@@ -31,8 +31,7 @@ public class testFileFreq {
 	@Before
 	public void beforeClass() throws IOException {
 		filefreq = new FileFreq();
-		filefreq.processLine(freqLine);
-		filefreq.processWords();
+		filefreq.processWords(freqLine);
 
 	}
 
@@ -46,14 +45,12 @@ public class testFileFreq {
 
 	}
 
-	public testFileFreq(String freqLine, Integer freqTextCount, String freqText, String freqTextNotCase,
-			HashMap<String, Integer> freqMap) {
+	public testFileFreq(String freqLine, Integer freqTextCount, String freqText, String freqTextNotCase) {
 		// TODO Auto-generated constructor stub
 		this.freqLine = freqLine;
 		this.freqTextCount = freqTextCount;
 		this.freqText = freqText;
 		this.freqTextNotCase = freqTextNotCase;
-		this.freqMap = freqMap;
 	}
 
 	/**
@@ -67,24 +64,10 @@ public class testFileFreq {
 	 */
 	@Parameterized.Parameters
 	public static Collection wordcountcoll() {
-		HashMap<String, Integer> map1 = new HashMap<>();
-		map1.put("This", 1);
-		map1.put("is", 1);
-		map1.put("a", 1);
-		map1.put("test", 1);
-		map1.put("line", 1);
-		map1.put("one", 1);
 
-		HashMap<String, Integer> map2 = new HashMap<>();
-		map2.put("This", 1);
-		map2.put("is", 1);
-		map2.put("a", 1);
-		map2.put("test", 1);
-		map2.put("line", 3);
-		map2.put("two", 1);
 
-		return Arrays.asList(new Object[][] { { "This is a test line one", 1, "test", "hello", map1 },
-				{ "This is a test line line line two", 3, "line", "Line", map2 } });
+		return Arrays.asList(new Object[][] { { "This is a test line one", 1, "test", "hello" },
+				{ "This is a test line line line two", 3, "line", "Line"} });
 	}
 
 	/**

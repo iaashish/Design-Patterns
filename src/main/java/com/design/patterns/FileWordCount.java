@@ -7,16 +7,46 @@ import java.util.Arrays;
 
 public class FileWordCount implements FileInterface {
 
-	int lineCount;
-	int wordCount;
-	int characterCount;
-	String[] lineArray = null;
+	private int lineCount;
+	private int wordCount;
+	private int characterCount;
+	private String[] lineArray = null;
 
 	FileWordCount() {
 		lineCount = 0;
 		wordCount = 0;
 		characterCount = 0;
 
+	}
+
+	/*
+	 * @Override public void processLine(String line) throws IOException { // TODO
+	 * Auto-generated method stub
+	 * 
+	 * if (line != null && !line.isEmpty()) { lineCount = lineCount + 1;
+	 * characterCount += line.replaceAll("\\s", "").length(); lineArray =
+	 * line.trim().split("\\s"); } }
+	 */
+
+	@Override
+	public void processWords(String line) throws IOException {
+		// TODO Auto-generated method stub
+		if (line != null && !line.isEmpty()) {
+			lineArray = line.trim().split("\\n");
+			lineCount += lineArray.length;
+			for (String s : lineArray) {
+				characterCount += s.replaceAll("[\\s,?.;'/0-9/]", "").length();
+			}
+			for (String w : lineArray) {
+				String[] w2 = w.replaceAll("[\\s.?,;/0-9/]", " ").split(" ");
+				for (String w3 : w2) {
+					if (!w3.matches("\\s") && !w3.isEmpty()) {
+						wordCount++;
+					}
+				}
+
+			}
+		}
 	}
 
 	@Override
@@ -28,28 +58,16 @@ public class FileWordCount implements FileInterface {
 		System.out.println("Characters : " + characterCount);
 	}
 
-	@Override
-	public void processLine(String line) throws IOException {
-		// TODO Auto-generated method stub
-		if (line != null && !line.isEmpty()) {
-			lineCount = lineCount + 1;
-			characterCount += line.replaceAll("\\s", "").length();
-			lineArray = line.trim().split("\\s");
-		}
+	public int getLineCount() {
+		return lineCount;
 	}
 
-	@Override
-	public void processWords() throws IOException {
-		// TODO Auto-generated method stub
-		ArrayList<String> list = new ArrayList<String>();
-		if (lineArray != null) {
-			for (String w : lineArray) {
-				if (!w.isEmpty()) {
-					list.add(w);
-				}
-			}
-		}
-		wordCount += list.size();
+	public int getWordCount() {
+		return wordCount;
+	}
+
+	public int getCharacterCount() {
+		return characterCount;
 	}
 
 }

@@ -12,15 +12,16 @@ public class FileFreq implements FileInterface {
 		frequencies = new HashMap<String, Integer>();
 	}
 
-	@Override
+/*	@Override
 	public void processLine(String line) throws IOException {
 		// TODO Auto-generated method stub
 		wordarray = line.trim().split("\\s");
-	}
+	}*/
 
 	@Override
-	public void processWords() throws IOException {
+	public void processWords(String line) throws IOException {
 		// TODO Auto-generated method stub
+		wordarray = line.trim().split("\\s");
 		for (String word : wordarray) {
 			Integer frequency = frequencies.get(word);
 			frequencies.put(word, (frequency == null) ? 1 : frequency + 1);

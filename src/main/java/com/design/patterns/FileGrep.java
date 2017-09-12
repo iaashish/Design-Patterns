@@ -15,17 +15,17 @@ public class FileGrep implements FileInterface {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
+/*	@Override
 	public void processLine(String line) throws IOException {
 		// TODO Auto-generated method stub
 		Sline = line;
 		lineArray = line.trim().split("\\n");
-	}
+	}*/
 
 	@Override
-	public void processWords() throws IOException {
+	public void processWords(String line) throws IOException {
 		// TODO Auto-generated method stub
-
+		lineArray = line.trim().split("\\n");
 		for (String grepLine : lineArray) {
 			if (grepLine.contains(searchword)) {
 				lineCount++;

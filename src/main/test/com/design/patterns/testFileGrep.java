@@ -73,8 +73,7 @@ public class testFileGrep {
 
 	@Test
 	public void testSearchWord() throws IOException {
-		filegrep.processLine(line);
-		filegrep.processWords();
+		filegrep.processWords(line);
 		assertEquals(line, outputContent.toString());
 	}
 
@@ -85,8 +84,7 @@ public class testFileGrep {
 	 */
 	@Test
 	public void testMultipleLines() throws IOException {
-		filegrep.processLine(multiline);
-		filegrep.processWords();
+		filegrep.processWords(multiline);
 		assertEquals(expectedresult, filegrep.lineCount);
 
 	}

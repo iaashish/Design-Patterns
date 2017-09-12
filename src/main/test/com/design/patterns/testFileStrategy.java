@@ -49,8 +49,7 @@ public class testFileStrategy {
 
 	@Parameterized.Parameters
 	public static Collection fileStrategyColl() {
-		return Arrays.asList(new Object[][] { { "testcases\\Singleline.txt", 1 },
-				{ "testcases\\EmptyFile.txt", 0 },
+		return Arrays.asList(new Object[][] { { "testcases\\Singleline.txt", 1 }, { "testcases\\EmptyFile.txt", 0 },
 				{ "testcases\\OmitEmptyLinesTestCase.txt", 3 } });
 	}
 
@@ -61,6 +60,6 @@ public class testFileStrategy {
 	@Test
 	public void testDifferentFiles() throws IOException {
 		fs.fileReader(filecontext, file);
-		assertEquals(expectedresult, filewordcount.lineCount);
+		assertEquals(expectedresult, filewordcount.getLineCount());
 	}
 }

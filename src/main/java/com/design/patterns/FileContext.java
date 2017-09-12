@@ -14,11 +14,11 @@ public class FileContext {
 		fileInterface.output();
 	}
 
-	public void executePW(String line) throws IOException {
+/*	public void executePW(String line) throws IOException {
 		fileInterface.processLine(line);
-	}
+	}*/
 
-	public void executeCW() throws IOException {
-		fileInterface.processWords();
+	public void executeCW(String line) throws IOException {
+		fileInterface.processWords(line);
 	}
 }

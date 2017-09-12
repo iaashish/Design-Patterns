@@ -4,9 +4,9 @@ import java.io.IOException;
 
 public interface FileInterface {
 
-	public void processLine(String line) throws IOException;
+//	public void processLine(String line) throws IOException;
 
-	public void processWords() throws IOException;
+	public void processWords(String line) throws IOException;
 
 	public void output();
 }

@@ -39,8 +39,8 @@ public class FileStrategy {
 			BufferedReader bf = new BufferedReader(new FileReader(file));
 			String line = null;
 			while ((line = bf.readLine()) != null) {
-				fc.executePW(line);
-				fc.executeCW();
+//				fc.executePW(line);
+				fc.executeCW(line);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
