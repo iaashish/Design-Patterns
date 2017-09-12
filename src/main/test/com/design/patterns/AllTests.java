@@ -5,7 +5,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ testFileFreq.class, testFileGrep.class, testFileStrategy.class, testFileWordCount.class })
+@SuiteClasses({ testFileFreq.class, testFileGrep.class, testFileWordCount.class })
 public class AllTests {
 
 }

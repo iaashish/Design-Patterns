@@ -40,7 +40,7 @@ public class FileWordCount implements FileInterface {
 			for (String w : lineArray) {
 				String[] w2 = w.replaceAll("[\\s.?,;/0-9/]", " ").split(" ");
 				for (String w3 : w2) {
-					if (!w3.matches("\\s") && !w3.isEmpty()) {
+					if (!w3.isEmpty()) {
 						wordCount++;
 					}
 				}

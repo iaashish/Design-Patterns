@@ -89,13 +89,4 @@ public class testFileFreq {
 		assertFalse(filefreq.frequencies.containsKey(freqTextNotCase));
 	}
 
-	/**
-	 * To test if the map contains the exact key,value pairs
-	 * 
-	 */
-	@Test
-	public void testTwoHashMapsEqual() {
-		assertEquals(freqMap, filefreq.frequencies);
-	}
-
 }
