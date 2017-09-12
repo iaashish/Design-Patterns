@@ -6,7 +6,6 @@ import java.util.HashMap;
 public class FileFreq implements FileInterface {
 
 	HashMap<String, Integer> frequencies;
-	String[] wordarray = null;
 
 	FileFreq() {
 		frequencies = new HashMap<String, Integer>();
@@ -21,7 +20,7 @@ public class FileFreq implements FileInterface {
 	@Override
 	public void processWords(String line) throws IOException {
 		// TODO Auto-generated method stub
-		wordarray = line.trim().split("\\s");
+		String[] wordarray = line.trim().split("\\s");
 		for (String word : wordarray) {
 			Integer frequency = frequencies.get(word);
 			frequencies.put(word, (frequency == null) ? 1 : frequency + 1);

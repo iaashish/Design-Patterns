@@ -7,22 +7,23 @@ import java.io.IOException;
 public class FileStrategy {
 
 	public static void main(String[] args) throws IOException {
+		FileContext fc;
 
 		try {
 			if (args[0].equalsIgnoreCase("wc")) {
-				FileContext fc = new FileContext(new FileWordCount());
+				fc = new FileContext(new FileWordCount());
 				fileReader(fc, args[1]);
 				fc.displayresult();
 			}
 
 			if (args[0].equalsIgnoreCase("grep")) {
-				FileContext fc = new FileContext(new FileGrep(args[1]));
+				fc = new FileContext(new FileGrep(args[1]));
 				fileReader(fc, args[2]);
 				fc.displayresult();
 			}
 
 			if (args[0].equalsIgnoreCase("freq")) {
-				FileContext fc = new FileContext(new FileFreq());
+				fc = new FileContext(new FileFreq());
 				fileReader(fc, args[1]);
 				fc.displayresult();
 			}
@@ -39,9 +40,9 @@ public class FileStrategy {
 			BufferedReader bf = new BufferedReader(new FileReader(file));
 			String line = null;
 			while ((line = bf.readLine()) != null) {
-//				fc.executePW(line);
 				fc.executeCW(line);
 			}
+			bf.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
