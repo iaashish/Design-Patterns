@@ -19,8 +19,11 @@ import org.junit.runners.*;
 public class testFileGrep {
 
 	private FileGrep filegrep;
+	private FileGrep get;//change made
 	private String searchWord;
 	private String line;
+	private String inputline;//change made
+	private String findword;//change made
 	private String multiline;
 	private int expectedresult;
 	ByteArrayOutputStream outputContent;
@@ -34,20 +37,24 @@ public class testFileGrep {
 		outputContent = new ByteArrayOutputStream();
 		System.setOut(new PrintStream(outputContent));
 		filegrep = new FileGrep(searchWord);
+		get = new FileGrep(findword);//change made
 	}
 
 	@After
 	public void afterTest() {
 		outputContent = null;
 		filegrep = null;
+		get = null;//change made
 	}
 
-	public testFileGrep(String line, String searchword, String multiline, int expectedresult) {
+	public testFileGrep(String line, String searchword, String multiline, int expectedresult, String inputline, String findword) {
 		// TODO Auto-generated constructor stub
 		this.line = line;
 		this.searchWord = searchword;
 		this.multiline = multiline;
 		this.expectedresult = expectedresult;
+		this.inputline = inputline;
+		this.findword = findword;
 	}
 
 	/**
@@ -60,9 +67,9 @@ public class testFileGrep {
 				{ "This is a test line one", "test",
 						"This is test for multiple lines 1\r\n" + "This is test for multiple lines 2\r\n"
 								+ "This is test for multiple lines 3\r\n" + "\r\n" + "",
-						3 },
+						3,"The way is too long","short" },
 				{ "This is a test line line line two", "line", "This is test for multiple lines 1\r\n"
-						+ "This is test for multiple lines 2\r\n" + "\r\n" + "\r\n" + "", 2 } });
+						+ "This is test for multiple lines 2\r\n" + "\r\n" + "\r\n" + "", 2,"My name is Henry","Peter" } });
 	}
 
 	/**
@@ -77,6 +84,12 @@ public class testFileGrep {
 		assertEquals(line, outputContent.toString());
 	}
 
+	//change made : have defined test case for scenario when word is not found during search
+	@Test
+	public void testSearchWordnotfound() throws IOException {
+		get.processWords(inputline);
+		assertNotEquals(inputline, outputContent.toString());
+	}
 	/**
 	 * Test case to check if multiple lines are printing
 	 * 
