@@ -1,16 +1,13 @@
 package com.design.patterns;
 
-import java.awt.List;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class FileWordCount implements FileInterface {
 
 	private int lineCount;
 	private int wordCount;
 	private int characterCount;
-	private String[] lineArray = null;
+	//private String[] lineArray = null;
 
 	FileWordCount() {
 		lineCount = 0;
@@ -32,20 +29,15 @@ public class FileWordCount implements FileInterface {
 	public void processWords(String line) throws IOException {
 		// TODO Auto-generated method stub
 		if (line != null && !line.isEmpty()) {
-			lineArray = line.trim().split("\\n");
-			lineCount += lineArray.length;
-			for (String s : lineArray) {
-				characterCount += s.replaceAll("[\\s,?.;'/0-9/]", "").length();
+			
+			lineCount +=line.split("\n").length;
+			characterCount += line.replaceAll("[\\s,?.;'/0-9/]", "").length();
+			String[] w=line.replaceAll("[\\s\\n\\r.?,;/0-9/]", " ").split(" ");
+			for(String w2:w) {
+				if(!(w2.isEmpty()))
+				wordCount ++;
 			}
-			for (String w : lineArray) {
-				String[] w2 = w.replaceAll("[\\s.?,;/0-9/]", " ").split(" ");
-				for (String w3 : w2) {
-					if (!w3.isEmpty()) {
-						wordCount++;
-					}
-				}
-
-			}
+			
 		}
 	}
 

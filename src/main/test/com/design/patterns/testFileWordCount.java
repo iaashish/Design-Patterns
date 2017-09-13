@@ -54,7 +54,7 @@ public class testFileWordCount {
 	 */
 	@Parameterized.Parameters
 	public static Collection wordcountcoll() {
-		return Arrays.asList(new Object[][] { { "This is a test line one\r\n" + "this is onr\r", 2, 9, 29 },
+		return Arrays.asList(new Object[][] { { "This is a test line one\r\n" + "this is onr\r", 2, 9, 27 },
 				{ "This is a test line ,,,,,,,,,,;;;;;;;;..........with special characters", 1, 8, 36 },
 				{ "There are many variations of passages of Lorem Ipsum available,\n"
 						+ " but the majority have suffered alteration in some form,\n" + " by injected humour, \n"
@@ -68,7 +68,7 @@ public class testFileWordCount {
 						+ " combined with a handful of model sentence structures, \n"
 						+ " to generate Lorem Ipsum which looks reasonable.\n"
 						+ "  The generated Lorem Ipsum is therefore always free from repetition,\n"
-						+ " injected humour, or non-characteristic words etc.", 14, 120, 616 },
+						+ " injected humour, or non-characteristic words etc.", 14, 120, 611 },
 				{ "", 0, 0, 0 }, { null, 0, 0, 0 } });
 
 	}
