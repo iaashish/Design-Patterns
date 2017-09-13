@@ -1,30 +1,53 @@
 package com.design.patterns;
+import java.util.StringTokenizer;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class FileStrategy {
 
 	public static void main(String[] args) throws IOException {
 		FileContext fc;
+		
+		BufferedReader br = null;
+		br = new BufferedReader(new InputStreamReader(System.in));
+		String operation = "";
+		String file = "";
+		String word = "";
+		while (true) {
+			System.out.print(">");
 
-		try {
-			if (args[0].equalsIgnoreCase("wc")) {
+			StringTokenizer tokens = new StringTokenizer(br.readLine());
+
+			if (tokens.countTokens() == 2) {
+				operation = tokens.nextToken();
+				file = tokens.nextToken();
+
+			} else if (tokens.countTokens() == 3) {
+			operation = tokens.nextToken();
+			word = tokens.nextToken();
+			file = tokens.nextToken();
+			} else {
+
+		}
+			try {
+			if (operation.equalsIgnoreCase("wc")) {
 				fc = new FileContext(new FileWordCount());
-				fileReader(fc, args[1]);
+				fileReader(fc, file);
 				fc.displayresult();
 			}
 
-			if (args[0].equalsIgnoreCase("grep")) {
+			if (operation.equalsIgnoreCase("grep")) {
 				fc = new FileContext(new FileGrep(args[1]));
-				fileReader(fc, args[2]);
+				fileReader(fc, file);
 				fc.displayresult();
 			}
 
-			if (args[0].equalsIgnoreCase("freq")) {
+			if (operation.equalsIgnoreCase("freq")) {
 				fc = new FileContext(new FileFreq());
-				fileReader(fc, args[1]);
+				fileReader(fc, file);
 				fc.displayresult();
 			}
 		} catch (Exception e) {
@@ -32,7 +55,7 @@ public class FileStrategy {
 			System.out.println("Error : " + e);
 		}
 	}
-
+	}
 	// Single to read from the file an pass each line to the required class
 	public static void fileReader(FileContext fc, String file) throws IOException {
 
